@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: advanced-rag-agent
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: QDRANT_URL
+        sync: false
+      - key: QDRANT_API_KEY
+        sync: false
+      - key: COHERE_API_KEY
+        sync: false
+      - key: MEM0_ENABLED
+        value: "true"
+      - key: MEM0_API_KEY
+        sync: false
