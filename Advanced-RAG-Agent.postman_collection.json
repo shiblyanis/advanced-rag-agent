@@ -1,0 +1,12 @@
+{
+  "info": {"name": "Advanced RAG Agent API", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},
+  "variable": [{"key":"baseUrl","value":"http://localhost:8000"}],
+  "item": [
+    {"name":"Health","request":{"method":"GET","url":"{{baseUrl}}/health"}},
+    {"name":"Chat","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"message\":\"Summarize the uploaded document\",\"user_id\":\"demo-user\",\"session_id\":\"default\"}"},"url":"{{baseUrl}}/api/chat"}},
+    {"name":"Upload document","request":{"method":"POST","body":{"mode":"formdata","formdata":[{"key":"file","type":"file","src":""}]},"url":"{{baseUrl}}/api/ingest"}},
+    {"name":"Save memory","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"user_id\":\"demo-user\",\"text\":\"Prefers concise answers\"}"},"url":"{{baseUrl}}/api/memories"}},
+    {"name":"List memories","request":{"method":"GET","url":"{{baseUrl}}/api/memories/demo-user"}},
+    {"name":"Metrics","request":{"method":"GET","url":"{{baseUrl}}/api/metrics"}}
+  ]
+}
